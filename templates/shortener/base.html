@@ -27,7 +27,7 @@
     {% if token %}
     <div class="text-center mt-5">
         <h1>Your short URL:</h1>
-        <a href="http://localhost:8000/{{ token }}">{{ hostname }}{{ token }}</a>
+        <a href="{{ hostname }}{{ token }}">{{ hostname }}{{ token }}</a>
     </div>
     {% endif %}
 </div>
