@@ -22,7 +22,6 @@ class Index(CreateView):
         while True:
             token = Shortener().generate_token()
             new_url.short_url = token
-            print(form.instance.short_url)
 
             try:
                 new_url.save()
@@ -31,8 +30,10 @@ class Index(CreateView):
             else:
                 token = new_url.short_url
                 messages.add_message(self.request, messages.SUCCESS, "Success")
-                hostname = self.request.build_absolute_uri('/')
+                hostname = self.request.build_absolute_uri("/")
 
                 return render(
-                    self.request, "shortener/base.html", {"token": token, "form": form, 'hostname': hostname}
+                    self.request,
+                    "shortener/base.html",
+                    {"token": token, "form": form, "hostname": hostname},
                 )
